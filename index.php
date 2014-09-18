@@ -22,38 +22,19 @@ body {
 
 <script type="text/javascript">
 		<?php $timestamp = time();?>
-		/*$(function() {
-    $('#file_upload').uploadifive({
-        'checkScript'  : '/check-exists.php',
-        'uploadScript' : '/uploadify.php',
-        'onCheck'      : function(file, exists) {
-            if (exists) {
-                alert('The file ' + file.name + ' exists on the server.');
-            }
-        }
-    });
-});*/
-
 		$(function() {
 			$('#file_upload').uploadify({
 				'auto'             : true,
 				'method'   : 'post',
 				'multi'    : true,
-				//'buttonImage' : 'browse-btn.png',
 				'buttonText' : 'PHOTOS...',
-				//'checkScript'      : 'check-exists.php',
-              //  'uploadScript'     : 'uploadify.php',
-		/*'onCheck'  : function(file, exists) {if (exists) {alert('The file ' + file.name + ' exists on the server.'); }*/
 				'formData'     : {
 					'timestamp' : '<?php echo $timestamp;?>',
 					'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
 					},
 				'queueID'          : 'queue',
 				'swf'      : 'uploadify.swf',
-				// 'checkScript'  : 'check-exists.php',
 				'uploader' : 'uploadify.php'
-				/*'onUploadComplete' : function(file, data) { console.log(data); }*/
-			
 			});
 		});
 	</script>
